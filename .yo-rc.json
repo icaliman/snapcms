@@ -1,0 +1,8 @@
+{
+  "generator-derby": {
+    "app": "test",
+    "coffee": true,
+    "stylus": true,
+    "jade": true
+  }
+}
