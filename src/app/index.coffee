@@ -11,5 +11,18 @@ app.serverUse module, 'derby-stylus'
 app.loadViews __dirname + '/../../views/app'
 app.loadStyles __dirname + '/../../styles/app'
 
+#app.use require './../../components'
+
+app.component require './../../components/todo-list'
+
+
 app.get '/', (page) ->
   page.render 'home'
+
+
+app.proto.init = (model) ->
+  if derby.util.isServer
+    for name, view of @app.views.nameMap
+      target = view.componentFactory?.constructor.prototype.target || view.options?.target
+      if target
+        model.root.push "_views.#{target}", name

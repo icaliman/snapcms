@@ -1,4 +1,7 @@
 index:
-  p Home
-  input(value="{{_page.message}}")
-  div {{_page.message}}
+  each _views.home as #home_view
+    view(name="{{#home_view}}")
+
+
+test-view:(target="home")
+  div View 1

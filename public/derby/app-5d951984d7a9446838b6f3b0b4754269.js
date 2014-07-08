@@ -1,4 +1,28 @@
 require=(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);throw new Error("Cannot find module '"+o+"'")}var f=n[o]={exports:{}};t[o][0].call(f.exports,function(e){var n=t[o][1][e];return s(n?n:e)},f,f.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
+module.exports = function(app) {
+  console.log("Init components");
+  return app.component(require('./todo-list'));
+};
+
+
+},{"./todo-list":2}],2:[function(require,module,exports){
+(function (__dirname){
+var TodoList;
+
+module.exports = TodoList = (function() {
+  function TodoList() {}
+
+  TodoList.prototype.view = __dirname;
+
+  TodoList.prototype.target = 'home';
+
+  return TodoList;
+
+})();
+
+
+}).call(this,"/components\\todo-list")
+},{}],3:[function(require,module,exports){
 (function (__dirname){
 module.exports = Dropdown;
 function Dropdown() {}
@@ -39,7 +63,7 @@ function optionValue(option) {
 }
 
 }).call(this,"/node_modules\\d-bootstrap\\dropdown")
-},{}],2:[function(require,module,exports){
+},{}],4:[function(require,module,exports){
 (function (__dirname){
 module.exports = function(app, options) {
   app.component(require('./dropdown'));
@@ -49,7 +73,7 @@ module.exports = function(app, options) {
 };
 
 }).call(this,"/node_modules\\d-bootstrap")
-},{"./dropdown":1,"./modal":3,"./tabs":4}],3:[function(require,module,exports){
+},{"./dropdown":3,"./modal":5,"./tabs":6}],5:[function(require,module,exports){
 (function (__dirname){
 module.exports = Modal;
 function Modal() {}
@@ -86,7 +110,7 @@ Modal.prototype.hide = function(action) {
 };
 
 }).call(this,"/node_modules\\d-bootstrap\\modal")
-},{}],4:[function(require,module,exports){
+},{}],6:[function(require,module,exports){
 (function (__dirname){
 module.exports = Tabs;
 function Tabs() {}
@@ -107,7 +131,7 @@ module.exports=require('uqEm/A');
 var Derby = require('./lib/Derby');
 module.exports = new Derby();
 
-},{"./lib/Derby":9}],7:[function(require,module,exports){
+},{"./lib/Derby":11}],9:[function(require,module,exports){
 /*
  * App.js
  *
@@ -331,7 +355,7 @@ App.prototype._autoRefresh = function() {
     app.page.render(ns);
   });
   function registerClient() {
-    var data = {name: app.name, hash: '4c591c5f5a72664b930d93692b334294'};
+    var data = {name: app.name, hash: '5d951984d7a9446838b6f3b0b4754269'};
     app.model.channel.send('derby:app', data, function(err) {
       if (!err) return;
       // Reload in a timeout so that returning fetches have time to complete
@@ -346,7 +370,7 @@ App.prototype._autoRefresh = function() {
 
 util.serverRequire(module, './App.server');
 
-},{"./Page":11,"./_views":12,"./documentListeners":14,"derby-templates":17,"events":39,"racer/lib/util":72,"tracks":25}],8:[function(require,module,exports){
+},{"./Page":13,"./_views":14,"./documentListeners":16,"derby-templates":19,"events":41,"racer/lib/util":74,"tracks":27}],10:[function(require,module,exports){
 var EventEmitter = require('events').EventEmitter;
 var util = require('racer/lib/util');
 var Dom = require('./Dom');
@@ -394,7 +418,7 @@ Controller.prototype.emitDelayable = function() {
   return delayed;
 };
 
-},{"./Dom":10,"events":39,"racer/lib/util":72}],9:[function(require,module,exports){
+},{"./Dom":12,"events":41,"racer/lib/util":74}],11:[function(require,module,exports){
 /*
  * Derby.js
  * Meant to be the entry point for the framework.
@@ -426,7 +450,7 @@ if (!racer.util.isServer) {
 
 racer.util.serverRequire(module, './Derby.server');
 
-},{"./App":7,"./Page":11,"./components":13,"./documentListeners":14,"events":39,"racer":"QfJu0F"}],10:[function(require,module,exports){
+},{"./App":9,"./Page":13,"./components":15,"./documentListeners":16,"events":41,"racer":"QfJu0F"}],12:[function(require,module,exports){
 module.exports = Dom;
 
 function Dom(controller) {
@@ -516,7 +540,7 @@ DomListener.prototype.remove = function() {
   this.target.removeEventListener(this.type, this.listener, this.useCapture);
 };
 
-},{}],11:[function(require,module,exports){
+},{}],13:[function(require,module,exports){
 (function (global){
 var derbyTemplates = require('derby-templates');
 var contexts = derbyTemplates.contexts;
@@ -817,9 +841,9 @@ function textUpdate(binding, element, pass) {
 util.serverRequire(module, './Page.server');
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./Controller":8,"./documentListeners":14,"./eventmodel":15,"./textDiff":16,"derby-templates":17,"racer/lib/util":72}],12:[function(require,module,exports){
-/*DERBY_SERIALIZED_VIEWS*/module.exports = function(derbyTemplates, views) {var expressions = derbyTemplates.expressions;var templates = derbyTemplates.templates;views.register('TitleElement', '<title><view name="{{$render.prefix}}Title"></view></title>').template = new templates.Template([new templates.Element('title', void 0, [new templates.DynamicViewInstance(new templates.Template([new templates.DynamicText(new expressions.PathExpression(['$render', 'prefix'], new expressions.ExpressionMeta('$render.prefix'))), new templates.Text('Title')]), {})], void 0, false)]);views.register('BodyElement', '<body class="{{$bodyClass($render.ns)}}"><view name="{{$render.prefix}}Body"></view>').template = new templates.Template([new templates.Element('body', {'class': new templates.DynamicAttribute(new expressions.FnExpression(['$bodyClass'], [new expressions.PathExpression(['$render', 'ns'])], void 0, new expressions.ExpressionMeta('$bodyClass($render.ns)')))}, [new templates.DynamicViewInstance(new templates.Template([new templates.DynamicText(new expressions.PathExpression(['$render', 'prefix'], new expressions.ExpressionMeta('$render.prefix'))), new templates.Text('Body')]), {})], void 0, false, true)]);views.register('Title', '\n{{_page.title}}\n').template = new templates.Template([new templates.DynamicText(new expressions.PathExpression(['_page', 'title'], new expressions.ExpressionMeta('_page.title')))]);views.register('Body', '\n  <view name="header"></view>\n  <view name="{{$render.ns}}"></view>\n  <view name="footer" year="2014"></view>\n  <div>sdfgsdfgsdfgsdfgsdf</div>\n').template = new templates.Template([new templates.ViewInstance('header', {}), new templates.DynamicViewInstance(new expressions.PathExpression(['$render', 'ns'], new expressions.ExpressionMeta('$render.ns')), {}), new templates.ViewInstance('footer', {'year': '2014'}), new templates.Element('div', void 0, [new templates.Text('sdfgsdfgsdfgsdfgsdf')], void 0, false)]);views.register('Tail', '').template = new templates.Template([]);views.register('dropdown:index', '\n  <div class="dropdown {{@class}}{{if open}} open{{/if}}">\n    <button\n      as="toggleButton"\n      on-click="toggle()"\n      id="dropdown-toggle{{id}}"\n      class="btn {{@buttonClass || \'btn-default\'}} dropdown-toggle"\n      type="button">\n      {{label(value)}} <span class="caret"></span>\n    </button>\n    <ul as="menu" class="dropdown-menu {{@menuClass}}" role="menu" aria-labelledby="dropdown-toggle{{id}}">\n      {{each @options}}\n        <li role="presentation" class="{{this.class}}">\n          <a on-click="select(this)" role="menuitem" tabindex="-1">{{this.content}}</a>\n        </li>\n      {{/each}}\n    </ul>\n  </div>\n\n', {'arrays': 'option/options', 'element': 'dropdown'}).template = new templates.Template([new templates.Comment('dropdown:index', [new templates.ComponentMarker()]), new templates.Element('div', {'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('dropdown '), new templates.DynamicText(new expressions.AttributePathExpression('class', [], new expressions.ExpressionMeta('@class'))), new templates.ConditionalBlock([new expressions.PathExpression(['open'], new expressions.ExpressionMeta('if open', 'if'))], [[new templates.Text(' open')]])]))}, [new templates.Element('button', {'id': new templates.DynamicAttribute(new templates.Template([new templates.Text('dropdown-toggle'), new templates.DynamicText(new expressions.PathExpression(['id'], new expressions.ExpressionMeta('id')))])), 'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('btn '), new templates.DynamicText(new expressions.OperatorExpression('||', [new expressions.AttributePathExpression('buttonClass', []), new expressions.LiteralExpression('btn-default')], void 0, new expressions.ExpressionMeta('@buttonClass || \'btn-default\''))), new templates.Text(' dropdown-toggle')])), 'type': new templates.Attribute('button')}, [new templates.DynamicText(new expressions.FnExpression(['label'], [new expressions.PathExpression(['value'])], void 0, new expressions.ExpressionMeta('label(value)'))), new templates.Text(' '), new templates.Element('span', {'class': new templates.Attribute('caret')}, [], void 0, false)], [new templates.MarkupAs(['toggleButton']), new templates.ElementOn('click', new expressions.FnExpression(['toggle'], []))], false), new templates.Element('ul', {'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('dropdown-menu '), new templates.DynamicText(new expressions.AttributePathExpression('menuClass', [], new expressions.ExpressionMeta('@menuClass')))])), 'role': new templates.Attribute('menu'), 'aria-labelledby': new templates.DynamicAttribute(new templates.Template([new templates.Text('dropdown-toggle'), new templates.DynamicText(new expressions.PathExpression(['id'], new expressions.ExpressionMeta('id')))]))}, [new templates.EachBlock(new expressions.AttributePathExpression('options', [], new expressions.ExpressionMeta('each @options', 'each')), [new templates.Element('li', {'role': new templates.Attribute('presentation'), 'class': new templates.DynamicAttribute(new expressions.RelativePathExpression(['class'], new expressions.ExpressionMeta('this.class')))}, [new templates.Element('a', {'role': new templates.Attribute('menuitem'), 'tabindex': new templates.Attribute('-1'), 'href': new templates.Attribute('#')}, [new templates.DynamicText(new expressions.RelativePathExpression(['content'], new expressions.ExpressionMeta('this.content')))], [new templates.ElementOn('click', new expressions.FnExpression(['select'], [new expressions.RelativePathExpression([])])), new templates.ElementOn('click', new expressions.FnExpression(['$preventDefault'], [new expressions.PathExpression(['$event'])]))], false)], void 0, false)])], [new templates.MarkupAs(['menu'])], false)], void 0, false)]);views.register('modal:index', '\n  <div class="modal fade{{if faded}} in{{/if}}" style="{{if show}}display: block{{/if}}">\n    <div on-click="hide(\'backdrop\')" class="modal-backdrop fade{{if faded}} in{{/if}}"></div>\n    <div class="modal-dialog">\n      <div class="modal-content">\n        <div class="modal-header">\n          <button on-click="hide(\'close\')" type="button" class="close" aria-hidden="true">&times;</button>\n          <h4 class="modal-title">{{@title}}</h4>\n        </div>\n        <div class="modal-body">\n          {{@content}}\n        </div>\n        <div class="modal-footer">\n          {{each @actions}}\n            <button\n              on-click="hide(this.value || this.content)"\n              type="button"\n              class="btn {{this.class || \'btn-default\'}}">\n              {{this.content}}\n            </button>\n          {{/each}}\n        </div>\n      </div>\n    </div>\n  </div>\n\n', {'arrays': 'action/actions', 'attributes': 'title', 'element': 'modal'}).template = new templates.Template([new templates.Comment('modal:index', [new templates.ComponentMarker()]), new templates.Element('div', {'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('modal fade'), new templates.ConditionalBlock([new expressions.PathExpression(['faded'], new expressions.ExpressionMeta('if faded', 'if'))], [[new templates.Text(' in')]])])), 'style': new templates.DynamicAttribute(new templates.ConditionalBlock([new expressions.PathExpression(['show'], new expressions.ExpressionMeta('if show', 'if'))], [[new templates.Text('display: block')]]))}, [new templates.Element('div', {'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('modal-backdrop fade'), new templates.ConditionalBlock([new expressions.PathExpression(['faded'], new expressions.ExpressionMeta('if faded', 'if'))], [[new templates.Text(' in')]])]))}, [], [new templates.ElementOn('click', new expressions.FnExpression(['hide'], [new expressions.LiteralExpression('backdrop')]))], false), new templates.Element('div', {'class': new templates.Attribute('modal-dialog')}, [new templates.Element('div', {'class': new templates.Attribute('modal-content')}, [new templates.Element('div', {'class': new templates.Attribute('modal-header')}, [new templates.Element('button', {'type': new templates.Attribute('button'), 'class': new templates.Attribute('close'), 'aria-hidden': new templates.Attribute('true')}, [new templates.Text('×')], [new templates.ElementOn('click', new expressions.FnExpression(['hide'], [new expressions.LiteralExpression('close')]))], false), new templates.Element('h4', {'class': new templates.Attribute('modal-title')}, [new templates.DynamicText(new expressions.AttributePathExpression('title', [], new expressions.ExpressionMeta('@title')))], void 0, false)], void 0, false), new templates.Element('div', {'class': new templates.Attribute('modal-body')}, [new templates.DynamicText(new expressions.AttributePathExpression('content', [], new expressions.ExpressionMeta('@content')))], void 0, false), new templates.Element('div', {'class': new templates.Attribute('modal-footer')}, [new templates.EachBlock(new expressions.AttributePathExpression('actions', [], new expressions.ExpressionMeta('each @actions', 'each')), [new templates.Element('button', {'type': new templates.Attribute('button'), 'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('btn '), new templates.DynamicText(new expressions.OperatorExpression('||', [new expressions.RelativePathExpression(['class']), new expressions.LiteralExpression('btn-default')], void 0, new expressions.ExpressionMeta('this.class || \'btn-default\'')))]))}, [new templates.DynamicText(new expressions.RelativePathExpression(['content'], new expressions.ExpressionMeta('this.content')))], [new templates.ElementOn('click', new expressions.FnExpression(['hide'], [new expressions.OperatorExpression('||', [new expressions.RelativePathExpression(['value']), new expressions.RelativePathExpression(['content'])])]))], false)])], void 0, false)], void 0, false)], void 0, false)], void 0, false)]);views.register('tabs:index', '\n  <ul class="nav nav-tabs">\n    {{each @panes as #pane, #i}}\n      <li class="{{if selectedIndex === #i}}active{{/if}}">\n        <a on-click="select(#i)">{{#pane.title}}</a>\n      </li>\n    {{/each}}\n  </ul>\n  <div class="tab-content">\n    {{each @panes as #pane, #i}}\n      <div class="tab-pane{{if selectedIndex === #i}} active{{/if}}">\n        {{#pane.content}}\n      </div>\n    {{/each}}\n  </div>\n\n', {'arrays': 'pane/panes', 'element': 'tabs'}).template = new templates.Template([new templates.Comment('tabs:index', [new templates.ComponentMarker()]), new templates.Element('ul', {'class': new templates.Attribute('nav nav-tabs')}, [new templates.EachBlock(new expressions.AttributePathExpression('panes', [], new expressions.ExpressionMeta('each @panes as #pane, #i', 'each', void 0, '#pane', '#i')), [new templates.Element('li', {'class': new templates.DynamicAttribute(new templates.ConditionalBlock([new expressions.OperatorExpression('===', [new expressions.PathExpression(['selectedIndex']), new expressions.AliasPathExpression('#i', [])], void 0, new expressions.ExpressionMeta('if selectedIndex === #i', 'if'))], [[new templates.Text('active')]]))}, [new templates.Element('a', {'href': new templates.Attribute('#')}, [new templates.DynamicText(new expressions.AliasPathExpression('#pane', ['title'], new expressions.ExpressionMeta('#pane.title')))], [new templates.ElementOn('click', new expressions.FnExpression(['select'], [new expressions.AliasPathExpression('#i', [])])), new templates.ElementOn('click', new expressions.FnExpression(['$preventDefault'], [new expressions.PathExpression(['$event'])]))], false)], void 0, false)])], void 0, false), new templates.Element('div', {'class': new templates.Attribute('tab-content')}, [new templates.EachBlock(new expressions.AttributePathExpression('panes', [], new expressions.ExpressionMeta('each @panes as #pane, #i', 'each', void 0, '#pane', '#i')), [new templates.Element('div', {'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('tab-pane'), new templates.ConditionalBlock([new expressions.OperatorExpression('===', [new expressions.PathExpression(['selectedIndex']), new expressions.AliasPathExpression('#i', [])], void 0, new expressions.ExpressionMeta('if selectedIndex === #i', 'if'))], [[new templates.Text(' active')]])]))}, [new templates.DynamicText(new expressions.AliasPathExpression('#pane', ['content'], new expressions.ExpressionMeta('#pane.content')))], void 0, false)])], void 0, false)]);views.register('home:index', '\n  <p>Home</p>\n  <input value="{{_page.message}}"/>\n  <div>{{_page.message}}</div>\n').template = new templates.Template([new templates.Element('p', void 0, [new templates.Text('Home')], void 0, false), new templates.Element('input', {'value': new templates.DynamicAttribute(new expressions.PathExpression(['_page', 'message'], new expressions.ExpressionMeta('_page.message')))}, null, void 0, true), new templates.Element('div', void 0, [new templates.DynamicText(new expressions.PathExpression(['_page', 'message'], new expressions.ExpressionMeta('_page.message')))], void 0, false)]);views.register('header', '\n  <h1>Header</h1>\n').template = new templates.Template([new templates.Element('h1', void 0, [new templates.Text('Header')], void 0, false)]);views.register('footer', '\n  <p>Footer {{@year}}</p>\n').template = new templates.Template([new templates.Element('p', void 0, [new templates.Text('Footer '), new templates.DynamicText(new expressions.AttributePathExpression('year', [], new expressions.ExpressionMeta('@year')))], void 0, false)]);};/*DERBY_SERIALIZED_VIEWS_END*/
-},{}],13:[function(require,module,exports){
+},{"./Controller":10,"./documentListeners":16,"./eventmodel":17,"./textDiff":18,"derby-templates":19,"racer/lib/util":74}],14:[function(require,module,exports){
+/*DERBY_SERIALIZED_VIEWS*/module.exports = function(derbyTemplates, views) {var expressions = derbyTemplates.expressions;var templates = derbyTemplates.templates;views.register('TitleElement', '<title><view name="{{$render.prefix}}Title"></view></title>').template = new templates.Template([new templates.Element('title', void 0, [new templates.DynamicViewInstance(new templates.Template([new templates.DynamicText(new expressions.PathExpression(['$render', 'prefix'], new expressions.ExpressionMeta('$render.prefix'))), new templates.Text('Title')]), {})], void 0, false)]);views.register('BodyElement', '<body class="{{$bodyClass($render.ns)}}"><view name="{{$render.prefix}}Body"></view>').template = new templates.Template([new templates.Element('body', {'class': new templates.DynamicAttribute(new expressions.FnExpression(['$bodyClass'], [new expressions.PathExpression(['$render', 'ns'])], void 0, new expressions.ExpressionMeta('$bodyClass($render.ns)')))}, [new templates.DynamicViewInstance(new templates.Template([new templates.DynamicText(new expressions.PathExpression(['$render', 'prefix'], new expressions.ExpressionMeta('$render.prefix'))), new templates.Text('Body')]), {})], void 0, false, true)]);views.register('Title', '\n{{_page.title}}\n').template = new templates.Template([new templates.DynamicText(new expressions.PathExpression(['_page', 'title'], new expressions.ExpressionMeta('_page.title')))]);views.register('Body', '\n  <view name="header"></view>\n  <view name="{{$render.ns}}"></view>\n  <view name="footer" year="2014"></view>\n').template = new templates.Template([new templates.ViewInstance('header', {}), new templates.DynamicViewInstance(new expressions.PathExpression(['$render', 'ns'], new expressions.ExpressionMeta('$render.ns')), {}), new templates.ViewInstance('footer', {'year': '2014'})]);views.register('Tail', '').template = new templates.Template([]);views.register('dropdown:index', '\n  <div class="dropdown {{@class}}{{if open}} open{{/if}}">\n    <button\n      as="toggleButton"\n      on-click="toggle()"\n      id="dropdown-toggle{{id}}"\n      class="btn {{@buttonClass || \'btn-default\'}} dropdown-toggle"\n      type="button">\n      {{label(value)}} <span class="caret"></span>\n    </button>\n    <ul as="menu" class="dropdown-menu {{@menuClass}}" role="menu" aria-labelledby="dropdown-toggle{{id}}">\n      {{each @options}}\n        <li role="presentation" class="{{this.class}}">\n          <a on-click="select(this)" role="menuitem" tabindex="-1">{{this.content}}</a>\n        </li>\n      {{/each}}\n    </ul>\n  </div>\n\n', {'arrays': 'option/options', 'element': 'dropdown'}).template = new templates.Template([new templates.Comment('dropdown:index', [new templates.ComponentMarker()]), new templates.Element('div', {'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('dropdown '), new templates.DynamicText(new expressions.AttributePathExpression('class', [], new expressions.ExpressionMeta('@class'))), new templates.ConditionalBlock([new expressions.PathExpression(['open'], new expressions.ExpressionMeta('if open', 'if'))], [[new templates.Text(' open')]])]))}, [new templates.Element('button', {'id': new templates.DynamicAttribute(new templates.Template([new templates.Text('dropdown-toggle'), new templates.DynamicText(new expressions.PathExpression(['id'], new expressions.ExpressionMeta('id')))])), 'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('btn '), new templates.DynamicText(new expressions.OperatorExpression('||', [new expressions.AttributePathExpression('buttonClass', []), new expressions.LiteralExpression('btn-default')], void 0, new expressions.ExpressionMeta('@buttonClass || \'btn-default\''))), new templates.Text(' dropdown-toggle')])), 'type': new templates.Attribute('button')}, [new templates.DynamicText(new expressions.FnExpression(['label'], [new expressions.PathExpression(['value'])], void 0, new expressions.ExpressionMeta('label(value)'))), new templates.Text(' '), new templates.Element('span', {'class': new templates.Attribute('caret')}, [], void 0, false)], [new templates.MarkupAs(['toggleButton']), new templates.ElementOn('click', new expressions.FnExpression(['toggle'], []))], false), new templates.Element('ul', {'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('dropdown-menu '), new templates.DynamicText(new expressions.AttributePathExpression('menuClass', [], new expressions.ExpressionMeta('@menuClass')))])), 'role': new templates.Attribute('menu'), 'aria-labelledby': new templates.DynamicAttribute(new templates.Template([new templates.Text('dropdown-toggle'), new templates.DynamicText(new expressions.PathExpression(['id'], new expressions.ExpressionMeta('id')))]))}, [new templates.EachBlock(new expressions.AttributePathExpression('options', [], new expressions.ExpressionMeta('each @options', 'each')), [new templates.Element('li', {'role': new templates.Attribute('presentation'), 'class': new templates.DynamicAttribute(new expressions.RelativePathExpression(['class'], new expressions.ExpressionMeta('this.class')))}, [new templates.Element('a', {'role': new templates.Attribute('menuitem'), 'tabindex': new templates.Attribute('-1'), 'href': new templates.Attribute('#')}, [new templates.DynamicText(new expressions.RelativePathExpression(['content'], new expressions.ExpressionMeta('this.content')))], [new templates.ElementOn('click', new expressions.FnExpression(['select'], [new expressions.RelativePathExpression([])])), new templates.ElementOn('click', new expressions.FnExpression(['$preventDefault'], [new expressions.PathExpression(['$event'])]))], false)], void 0, false)])], [new templates.MarkupAs(['menu'])], false)], void 0, false)]);views.register('modal:index', '\n  <div class="modal fade{{if faded}} in{{/if}}" style="{{if show}}display: block{{/if}}">\n    <div on-click="hide(\'backdrop\')" class="modal-backdrop fade{{if faded}} in{{/if}}"></div>\n    <div class="modal-dialog">\n      <div class="modal-content">\n        <div class="modal-header">\n          <button on-click="hide(\'close\')" type="button" class="close" aria-hidden="true">&times;</button>\n          <h4 class="modal-title">{{@title}}</h4>\n        </div>\n        <div class="modal-body">\n          {{@content}}\n        </div>\n        <div class="modal-footer">\n          {{each @actions}}\n            <button\n              on-click="hide(this.value || this.content)"\n              type="button"\n              class="btn {{this.class || \'btn-default\'}}">\n              {{this.content}}\n            </button>\n          {{/each}}\n        </div>\n      </div>\n    </div>\n  </div>\n\n', {'arrays': 'action/actions', 'attributes': 'title', 'element': 'modal'}).template = new templates.Template([new templates.Comment('modal:index', [new templates.ComponentMarker()]), new templates.Element('div', {'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('modal fade'), new templates.ConditionalBlock([new expressions.PathExpression(['faded'], new expressions.ExpressionMeta('if faded', 'if'))], [[new templates.Text(' in')]])])), 'style': new templates.DynamicAttribute(new templates.ConditionalBlock([new expressions.PathExpression(['show'], new expressions.ExpressionMeta('if show', 'if'))], [[new templates.Text('display: block')]]))}, [new templates.Element('div', {'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('modal-backdrop fade'), new templates.ConditionalBlock([new expressions.PathExpression(['faded'], new expressions.ExpressionMeta('if faded', 'if'))], [[new templates.Text(' in')]])]))}, [], [new templates.ElementOn('click', new expressions.FnExpression(['hide'], [new expressions.LiteralExpression('backdrop')]))], false), new templates.Element('div', {'class': new templates.Attribute('modal-dialog')}, [new templates.Element('div', {'class': new templates.Attribute('modal-content')}, [new templates.Element('div', {'class': new templates.Attribute('modal-header')}, [new templates.Element('button', {'type': new templates.Attribute('button'), 'class': new templates.Attribute('close'), 'aria-hidden': new templates.Attribute('true')}, [new templates.Text('×')], [new templates.ElementOn('click', new expressions.FnExpression(['hide'], [new expressions.LiteralExpression('close')]))], false), new templates.Element('h4', {'class': new templates.Attribute('modal-title')}, [new templates.DynamicText(new expressions.AttributePathExpression('title', [], new expressions.ExpressionMeta('@title')))], void 0, false)], void 0, false), new templates.Element('div', {'class': new templates.Attribute('modal-body')}, [new templates.DynamicText(new expressions.AttributePathExpression('content', [], new expressions.ExpressionMeta('@content')))], void 0, false), new templates.Element('div', {'class': new templates.Attribute('modal-footer')}, [new templates.EachBlock(new expressions.AttributePathExpression('actions', [], new expressions.ExpressionMeta('each @actions', 'each')), [new templates.Element('button', {'type': new templates.Attribute('button'), 'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('btn '), new templates.DynamicText(new expressions.OperatorExpression('||', [new expressions.RelativePathExpression(['class']), new expressions.LiteralExpression('btn-default')], void 0, new expressions.ExpressionMeta('this.class || \'btn-default\'')))]))}, [new templates.DynamicText(new expressions.RelativePathExpression(['content'], new expressions.ExpressionMeta('this.content')))], [new templates.ElementOn('click', new expressions.FnExpression(['hide'], [new expressions.OperatorExpression('||', [new expressions.RelativePathExpression(['value']), new expressions.RelativePathExpression(['content'])])]))], false)])], void 0, false)], void 0, false)], void 0, false)], void 0, false)]);views.register('tabs:index', '\n  <ul class="nav nav-tabs">\n    {{each @panes as #pane, #i}}\n      <li class="{{if selectedIndex === #i}}active{{/if}}">\n        <a on-click="select(#i)">{{#pane.title}}</a>\n      </li>\n    {{/each}}\n  </ul>\n  <div class="tab-content">\n    {{each @panes as #pane, #i}}\n      <div class="tab-pane{{if selectedIndex === #i}} active{{/if}}">\n        {{#pane.content}}\n      </div>\n    {{/each}}\n  </div>\n\n', {'arrays': 'pane/panes', 'element': 'tabs'}).template = new templates.Template([new templates.Comment('tabs:index', [new templates.ComponentMarker()]), new templates.Element('ul', {'class': new templates.Attribute('nav nav-tabs')}, [new templates.EachBlock(new expressions.AttributePathExpression('panes', [], new expressions.ExpressionMeta('each @panes as #pane, #i', 'each', void 0, '#pane', '#i')), [new templates.Element('li', {'class': new templates.DynamicAttribute(new templates.ConditionalBlock([new expressions.OperatorExpression('===', [new expressions.PathExpression(['selectedIndex']), new expressions.AliasPathExpression('#i', [])], void 0, new expressions.ExpressionMeta('if selectedIndex === #i', 'if'))], [[new templates.Text('active')]]))}, [new templates.Element('a', {'href': new templates.Attribute('#')}, [new templates.DynamicText(new expressions.AliasPathExpression('#pane', ['title'], new expressions.ExpressionMeta('#pane.title')))], [new templates.ElementOn('click', new expressions.FnExpression(['select'], [new expressions.AliasPathExpression('#i', [])])), new templates.ElementOn('click', new expressions.FnExpression(['$preventDefault'], [new expressions.PathExpression(['$event'])]))], false)], void 0, false)])], void 0, false), new templates.Element('div', {'class': new templates.Attribute('tab-content')}, [new templates.EachBlock(new expressions.AttributePathExpression('panes', [], new expressions.ExpressionMeta('each @panes as #pane, #i', 'each', void 0, '#pane', '#i')), [new templates.Element('div', {'class': new templates.DynamicAttribute(new templates.Template([new templates.Text('tab-pane'), new templates.ConditionalBlock([new expressions.OperatorExpression('===', [new expressions.PathExpression(['selectedIndex']), new expressions.AliasPathExpression('#i', [])], void 0, new expressions.ExpressionMeta('if selectedIndex === #i', 'if'))], [[new templates.Text(' active')]])]))}, [new templates.DynamicText(new expressions.AliasPathExpression('#pane', ['content'], new expressions.ExpressionMeta('#pane.content')))], void 0, false)])], void 0, false)]);views.register('home:index', '\n  {{each _views.home as #home_view}}\n    <view name="{{#home_view}}"></view>\n  {{/}}\n').template = new templates.Template([new templates.EachBlock(new expressions.PathExpression(['_views', 'home'], new expressions.ExpressionMeta('each _views.home as #home_view', 'each', void 0, '#home_view')), [new templates.DynamicViewInstance(new expressions.AliasPathExpression('#home_view', [], new expressions.ExpressionMeta('#home_view')), {})])]);views.register('home:test-view', '\n  <div>View 1</div>\n', {'target': 'home'}).template = new templates.Template([new templates.Element('div', void 0, [new templates.Text('View 1')], void 0, false)]);views.register('header', '\n  <h1>Header</h1>\n').template = new templates.Template([new templates.Element('h1', void 0, [new templates.Text('Header')], void 0, false)]);views.register('footer', '\n  <p>Footer {{@year}}</p>\n').template = new templates.Template([new templates.Element('p', void 0, [new templates.Text('Footer '), new templates.DynamicText(new expressions.AttributePathExpression('year', [], new expressions.ExpressionMeta('@year')))], void 0, false)]);views.register('todo-list:index', '\r\n  div Todo list\r\n\n').template = new templates.Template([new templates.Comment('todo-list:index', [new templates.ComponentMarker()]), new templates.Text('div Todo list')]);};/*DERBY_SERIALIZED_VIEWS_END*/
+},{}],15:[function(require,module,exports){
 /*
  * components.js
  *
@@ -1036,8 +1060,8 @@ function extendComponent(constructor) {
   constructor.prototype = new Component();
   util.mergeInto(constructor.prototype, oldPrototype);
 }
-function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}
-},{"./App":7,"./Controller":8,"derby-templates":17,"path":40,"racer/lib/util":72}],14:[function(require,module,exports){
+function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}function basename(filename, ext) { filename = filename.replace(/\\/g, '/'); return path.basename(filename, ext);}
+},{"./App":9,"./Controller":10,"derby-templates":19,"path":42,"racer/lib/util":74}],16:[function(require,module,exports){
 var textDiff = require('./textDiff');
 
 exports.add = addDocumentListeners;
@@ -1129,7 +1153,7 @@ function setOptionBindings(parent) {
   }
 }
 
-},{"./textDiff":16}],15:[function(require,module,exports){
+},{"./textDiff":18}],17:[function(require,module,exports){
 var expressions = require('derby-templates').expressions;
 
 // The many trees of bindings:
@@ -1688,7 +1712,7 @@ EventModel.prototype.move = function(segments, from, to, howMany) {
   });
 };
 
-},{"derby-templates":17}],16:[function(require,module,exports){
+},{"derby-templates":19}],18:[function(require,module,exports){
 exports.onStringInsert = onStringInsert;
 exports.onStringRemove = onStringRemove;
 exports.onTextInput = onTextInput;
@@ -1752,13 +1776,13 @@ function onTextInput(model, segments, value) {
   }
 }
 
-},{}],17:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 exports.contexts = require('./lib/contexts');
 exports.expressions = require('./lib/expressions');
 exports.operatorFns = require('./lib/operatorFns');
 exports.templates = require('./lib/templates');
 
-},{"./lib/contexts":18,"./lib/expressions":19,"./lib/operatorFns":20,"./lib/templates":21}],18:[function(require,module,exports){
+},{"./lib/contexts":20,"./lib/expressions":21,"./lib/operatorFns":22,"./lib/templates":23}],20:[function(require,module,exports){
 exports.ContextMeta = ContextMeta;
 exports.Context = Context;
 
@@ -1942,7 +1966,7 @@ PendingCreate.prototype.run = function() {
   this.object.create(this.context);
 };
 
-},{}],19:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 (function (global){
 var serializeObject = require('serialize-object');
 var operatorFns = require('./operatorFns');
@@ -2490,7 +2514,7 @@ function concat(a, b) {
 }
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./operatorFns":20,"./templates":21,"serialize-object":23}],20:[function(require,module,exports){
+},{"./operatorFns":22,"./templates":23,"serialize-object":25}],22:[function(require,module,exports){
 // `-` and `+` can be either unary or binary, so all unary operators are
 // postfixed with `U` to differentiate
 
@@ -2637,7 +2661,7 @@ exports.set = {
   }
 };
 
-},{}],21:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 var saddle = require('saddle');
 var serializeObject = require('serialize-object');
 
@@ -3094,7 +3118,7 @@ function hasKeys(value) {
   return false;
 }
 
-},{"saddle":22,"serialize-object":23}],22:[function(require,module,exports){
+},{"saddle":24,"serialize-object":25}],24:[function(require,module,exports){
 if (typeof require === 'function') {
   var serializeObject = require('serialize-object');
 }
@@ -4268,7 +4292,7 @@ function normalizeLineBreaks(string) {
   }
 })();
 
-},{"serialize-object":23}],23:[function(require,module,exports){
+},{"serialize-object":25}],25:[function(require,module,exports){
 exports.instance = serializeInstance;
 exports.args = serializeArgs;
 exports.value = serializeValue;
@@ -4339,7 +4363,7 @@ function formatString(value) {
   return '\'' + escaped + '\'';
 }
 
-},{}],24:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 var qs = require('qs')
 var parseUrl = require('url').parse
 var resolveUrl = require('url').resolve
@@ -4579,7 +4603,7 @@ function addListeners(history) {
   window.addEventListener('popstate', onPopState, true)
 }
 
-},{"./router":26,"qs":27,"url":46}],25:[function(require,module,exports){
+},{"./router":28,"qs":29,"url":48}],27:[function(require,module,exports){
 var Route = require('../vendor/express/router/route')
 var History = require('./History')
 var router = module.exports = require('./router')
@@ -4634,7 +4658,7 @@ function setup(app) {
   })
 }
 
-},{"../vendor/express/router/route":28,"./History":24,"./router":26}],26:[function(require,module,exports){
+},{"../vendor/express/router/route":30,"./History":26,"./router":28}],28:[function(require,module,exports){
 var qs = require('qs')
 var nodeUrl = require('url');
 
@@ -4777,7 +4801,7 @@ RenderReq.prototype.routeParams = function(route) {
   return params
 }
 
-},{"qs":27,"url":46}],27:[function(require,module,exports){
+},{"qs":29,"url":48}],29:[function(require,module,exports){
 /**
  * Object#toString() ref for stringify().
  */
@@ -5145,7 +5169,7 @@ function decode(str) {
   }
 }
 
-},{}],28:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 
 /**
  * Module dependencies.
@@ -5219,7 +5243,7 @@ Route.prototype.match = function(path){
   return true;
 };
 
-},{"../utils":29}],29:[function(require,module,exports){
+},{"../utils":31}],31:[function(require,module,exports){
 
 /**
  * Module dependencies.
@@ -5531,7 +5555,7 @@ exports.pathRegexp = function(path, keys, sensitive, strict) {
   return new RegExp('^' + path + '$', sensitive ? '' : 'i');
 }
 
-},{}],30:[function(require,module,exports){
+},{}],32:[function(require,module,exports){
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -6642,7 +6666,7 @@ function assert (test, message) {
   if (!test) throw new Error(message || 'Failed assertion')
 }
 
-},{"base64-js":31,"ieee754":32}],31:[function(require,module,exports){
+},{"base64-js":33,"ieee754":34}],33:[function(require,module,exports){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
 ;(function (exports) {
@@ -6764,7 +6788,7 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 	exports.fromByteArray = uint8ToBase64
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
-},{}],32:[function(require,module,exports){
+},{}],34:[function(require,module,exports){
 exports.read = function(buffer, offset, isLE, mLen, nBytes) {
   var e, m,
       eLen = nBytes * 8 - mLen - 1,
@@ -6850,7 +6874,7 @@ exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128;
 };
 
-},{}],33:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 var Buffer = require('buffer').Buffer;
 var intSize = 4;
 var zeroBuffer = new Buffer(intSize); zeroBuffer.fill(0);
@@ -6887,7 +6911,7 @@ function hash(buf, fn, hashSize, bigEndian) {
 
 module.exports = { hash: hash };
 
-},{"buffer":30}],34:[function(require,module,exports){
+},{"buffer":32}],36:[function(require,module,exports){
 var Buffer = require('buffer').Buffer
 var sha = require('./sha')
 var sha256 = require('./sha256')
@@ -6986,7 +7010,7 @@ each(['createCredentials'
   }
 })
 
-},{"./md5":35,"./rng":36,"./sha":37,"./sha256":38,"buffer":30}],35:[function(require,module,exports){
+},{"./md5":37,"./rng":38,"./sha":39,"./sha256":40,"buffer":32}],37:[function(require,module,exports){
 /*
  * A JavaScript implementation of the RSA Data Security, Inc. MD5 Message
  * Digest Algorithm, as defined in RFC 1321.
@@ -7151,7 +7175,7 @@ module.exports = function md5(buf) {
   return helpers.hash(buf, core_md5, 16);
 };
 
-},{"./helpers":33}],36:[function(require,module,exports){
+},{"./helpers":35}],38:[function(require,module,exports){
 // Original code adapted from Robert Kieffer.
 // details at https://github.com/broofa/node-uuid
 (function() {
@@ -7184,7 +7208,7 @@ module.exports = function md5(buf) {
 
 }())
 
-},{}],37:[function(require,module,exports){
+},{}],39:[function(require,module,exports){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
  * in FIPS PUB 180-1
@@ -7287,7 +7311,7 @@ module.exports = function sha1(buf) {
   return helpers.hash(buf, core_sha1, 20, true);
 };
 
-},{"./helpers":33}],38:[function(require,module,exports){
+},{"./helpers":35}],40:[function(require,module,exports){
 
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
@@ -7368,7 +7392,7 @@ module.exports = function sha256(buf) {
   return helpers.hash(buf, core_sha256, 32, true);
 };
 
-},{"./helpers":33}],39:[function(require,module,exports){
+},{"./helpers":35}],41:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -7673,7 +7697,7 @@ function isUndefined(arg) {
   return arg === void 0;
 }
 
-},{}],40:[function(require,module,exports){
+},{}],42:[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -7901,7 +7925,7 @@ var substr = 'ab'.substr(-1) === 'b'
 ;
 
 }).call(this,require("fH0/fz"))
-},{"fH0/fz":41}],41:[function(require,module,exports){
+},{"fH0/fz":43}],43:[function(require,module,exports){
 // shim for using process in browser
 
 var process = module.exports = {};
@@ -7966,7 +7990,7 @@ process.chdir = function (dir) {
     throw new Error('process.chdir is not supported');
 };
 
-},{}],42:[function(require,module,exports){
+},{}],44:[function(require,module,exports){
 (function (global){
 /*! http://mths.be/punycode v1.2.4 by @mathias */
 ;(function(root) {
@@ -8477,7 +8501,7 @@ process.chdir = function (dir) {
 }(this));
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],43:[function(require,module,exports){
+},{}],45:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -8563,7 +8587,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],44:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -8650,13 +8674,13 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],45:[function(require,module,exports){
+},{}],47:[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":43,"./encode":44}],46:[function(require,module,exports){
+},{"./decode":45,"./encode":46}],48:[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -9365,7 +9389,7 @@ function isNullOrUndefined(arg) {
   return  arg == null;
 }
 
-},{"punycode":42,"querystring":45}],47:[function(require,module,exports){
+},{"punycode":44,"querystring":47}],49:[function(require,module,exports){
 var racer = require('racer');
 //var BCSocket = require('browserchannel/dist/bcsocket-uncompressed').BCSocket;
 
@@ -9476,7 +9500,7 @@ racer.Model.prototype._createSocket = function(bundle) {
   return new TransportWrapper(CLIENT_OPTIONS);
 };
 
-},{"racer":"QfJu0F"}],48:[function(require,module,exports){
+},{"racer":"QfJu0F"}],50:[function(require,module,exports){
 var EventEmitter = require('events').EventEmitter;
 var util = require('./util');
 
@@ -9570,7 +9594,7 @@ Message.prototype.toJSON = function() {
   };
 };
 
-},{"./util":72,"events":39}],49:[function(require,module,exports){
+},{"./util":74,"events":41}],51:[function(require,module,exports){
 module.exports = Doc;
 
 function Doc(model, collectionName, id) {
@@ -9588,7 +9612,7 @@ Doc.prototype._errorMessage = function(description, segments, value) {
     JSON.stringify(value, null, 2);
 };
 
-},{}],50:[function(require,module,exports){
+},{}],52:[function(require,module,exports){
 var Doc = require('./Doc');
 var util = require('../util');
 
@@ -9800,7 +9824,7 @@ function nodeCreateArray(node, key) {
   return node[key] || (node[key] = []);
 }
 
-},{"../util":72,"./Doc":49}],51:[function(require,module,exports){
+},{"../util":74,"./Doc":51}],53:[function(require,module,exports){
 var uuid = require('node-uuid');
 
 Model.INITS = [];
@@ -9844,7 +9868,7 @@ function ChildModel(model) {
 }
 ChildModel.prototype = new Model();
 
-},{"node-uuid":75}],52:[function(require,module,exports){
+},{"node-uuid":77}],54:[function(require,module,exports){
 (function (process){
 var util = require('../util');
 var Model = require('./Model');
@@ -10431,7 +10455,7 @@ function collectionShareDocs(model, collectionName) {
 }
 
 }).call(this,require("fH0/fz"))
-},{"../util":72,"./Model":51,"arraydiff":73,"fH0/fz":41}],53:[function(require,module,exports){
+},{"../util":74,"./Model":53,"arraydiff":75,"fH0/fz":43}],55:[function(require,module,exports){
 /**
  * RemoteDoc adapts the ShareJS operation protocol to Racer's mutator
  * interface.
@@ -10874,7 +10898,7 @@ function defined(value) {
   return value !== void 0;
 }
 
-},{"../util":72,"./Doc":49}],54:[function(require,module,exports){
+},{"../util":74,"./Doc":51}],56:[function(require,module,exports){
 var Model = require('./Model');
 var LocalDoc = require('./LocalDoc');
 var util = require('../util');
@@ -11025,7 +11049,7 @@ function noKeys(object) {
   return true;
 }
 
-},{"../util":72,"./LocalDoc":50,"./Model":51}],55:[function(require,module,exports){
+},{"../util":74,"./LocalDoc":52,"./Model":53}],57:[function(require,module,exports){
 (function (process){
 var share = require('share/lib/client');
 var Channel = require('../Channel');
@@ -11154,7 +11178,7 @@ Model.prototype._firstShareDoc = function(fn) {
 };
 
 }).call(this,require("fH0/fz"))
-},{"../Channel":48,"./LocalDoc":50,"./Model":51,"./RemoteDoc":53,"fH0/fz":41,"share/lib/client":78}],56:[function(require,module,exports){
+},{"../Channel":50,"./LocalDoc":52,"./Model":53,"./RemoteDoc":55,"fH0/fz":43,"share/lib/client":80}],58:[function(require,module,exports){
 /**
  * Contexts are useful for keeping track of the origin of subscribes.
  */
@@ -11279,7 +11303,7 @@ Context.prototype.unload = function() {
   }
 };
 
-},{"./Model":51,"./Query":52}],57:[function(require,module,exports){
+},{"./Model":53,"./Query":54}],59:[function(require,module,exports){
 var defaultFns = module.exports = new DefaultFns();
 
 defaultFns.reverse = new FnPair(getReverse, setReverse);
@@ -11310,7 +11334,7 @@ function desc(a, b) {
   return 0;
 }
 
-},{}],58:[function(require,module,exports){
+},{}],60:[function(require,module,exports){
 var EventEmitter = require('events').EventEmitter;
 var util = require('../util');
 var Model = require('./Model');
@@ -11606,7 +11630,7 @@ function stripRestWildcard(segments) {
   return true;
 }
 
-},{"../util":72,"./Model":51,"events":39}],59:[function(require,module,exports){
+},{"../util":74,"./Model":53,"events":41}],61:[function(require,module,exports){
 var util = require('../util');
 var Model = require('./Model');
 var defaultFns = require('./defaultFns');
@@ -11855,7 +11879,7 @@ Filter.prototype.destroy = function() {
   this.model._del(this.idsSegments);
 };
 
-},{"../util":72,"./Model":51,"./defaultFns":57}],60:[function(require,module,exports){
+},{"../util":74,"./Model":53,"./defaultFns":59}],62:[function(require,module,exports){
 var util = require('../util');
 var Model = require('./Model');
 var defaultFns = require('./defaultFns');
@@ -12068,7 +12092,7 @@ Fn.prototype._setValue = function(model, segments, value) {
   }
 };
 
-},{"../util":72,"./Model":51,"./defaultFns":57}],61:[function(require,module,exports){
+},{"../util":74,"./Model":53,"./defaultFns":59}],63:[function(require,module,exports){
 module.exports = require('./Model');
 var util = require('../util');
 
@@ -12094,7 +12118,7 @@ require('./ref');
 util.serverRequire(module, './bundle');
 util.serverRequire(module, './connection.server');
 
-},{"../util":72,"./Model":51,"./Query":52,"./collections":54,"./connection":55,"./contexts":56,"./events":58,"./filter":59,"./fn":60,"./mutators":62,"./paths":63,"./ref":64,"./refList":65,"./setDiff":66,"./subscriptions":67,"./unbundle":68}],62:[function(require,module,exports){
+},{"../util":74,"./Model":53,"./Query":54,"./collections":56,"./connection":57,"./contexts":58,"./events":60,"./filter":61,"./fn":62,"./mutators":64,"./paths":65,"./ref":66,"./refList":67,"./setDiff":68,"./subscriptions":69,"./unbundle":70}],64:[function(require,module,exports){
 var util = require('../util');
 var Model = require('./Model');
 
@@ -12665,7 +12689,7 @@ Model.prototype._stringRemove = function(segments, index, howMany, cb) {
   return this._mutate(segments, stringRemove, cb);
 };
 
-},{"../util":72,"./Model":51}],63:[function(require,module,exports){
+},{"../util":74,"./Model":53}],65:[function(require,module,exports){
 var Model = require('./Model');
 
 exports.mixin = {};
@@ -12747,7 +12771,7 @@ Model.prototype.leaf = function(path) {
   return path.slice(i + 1);
 };
 
-},{"./Model":51}],64:[function(require,module,exports){
+},{"./Model":53}],66:[function(require,module,exports){
 var util = require('../util');
 var Model = require('./Model');
 
@@ -13096,7 +13120,7 @@ function listMapRemove(map, name, item) {
   if (!items.length) delete map[name];
 }
 
-},{"../util":72,"./Model":51}],65:[function(require,module,exports){
+},{"../util":74,"./Model":53}],67:[function(require,module,exports){
 var util = require('../util');
 var Model = require('./Model');
 
@@ -13618,7 +13642,7 @@ RefLists.prototype.toJSON = function() {
   return out;
 };
 
-},{"../util":72,"./Model":51}],66:[function(require,module,exports){
+},{"../util":74,"./Model":53}],68:[function(require,module,exports){
 var util = require('../util');
 var Model = require('./Model');
 var arrayDiff = require('arraydiff');
@@ -13827,7 +13851,7 @@ Model.prototype._applyArrayDiff = function(segments, diff, cb) {
   return this._mutate(segments, applyArrayDiff, cb);
 };
 
-},{"../util":72,"./Model":51,"arraydiff":73}],67:[function(require,module,exports){
+},{"../util":74,"./Model":53,"arraydiff":75}],69:[function(require,module,exports){
 (function (process){
 var util = require('../util');
 var Model = require('./Model');
@@ -14080,7 +14104,7 @@ Model.prototype._maybeUnloadDoc = function(collectionName, id, path) {
 };
 
 }).call(this,require("fH0/fz"))
-},{"../util":72,"./Model":51,"./Query":52,"fH0/fz":41}],68:[function(require,module,exports){
+},{"../util":74,"./Model":53,"./Query":54,"fH0/fz":43}],70:[function(require,module,exports){
 var Model = require('./Model');
 
 Model.prototype.unbundle = function(data) {
@@ -14139,7 +14163,7 @@ Model.prototype.unbundle = function(data) {
   }
 };
 
-},{"./Model":51}],69:[function(require,module,exports){
+},{"./Model":53}],71:[function(require,module,exports){
 var EventEmitter = require('events').EventEmitter;
 var Model = require('./Model');
 var util = require('./util');
@@ -14171,13 +14195,13 @@ Racer.prototype.createModel = function(data) {
 
 util.serverRequire(module, './Racer.server');
 
-},{"./Model":61,"./util":72,"events":39}],"QfJu0F":[function(require,module,exports){
+},{"./Model":63,"./util":74,"events":41}],"QfJu0F":[function(require,module,exports){
 var Racer = require('./Racer');
 module.exports = new Racer();
 
-},{"./Racer":69}],"racer":[function(require,module,exports){
+},{"./Racer":71}],"racer":[function(require,module,exports){
 module.exports=require('QfJu0F');
-},{}],72:[function(require,module,exports){
+},{}],74:[function(require,module,exports){
 (function (process){
 var deepIs = require('deep-is');
 
@@ -14361,7 +14385,7 @@ function use(plugin, options) {
 }
 
 }).call(this,require("fH0/fz"))
-},{"deep-is":74,"fH0/fz":41}],73:[function(require,module,exports){
+},{"deep-is":76,"fH0/fz":43}],75:[function(require,module,exports){
 module.exports = arrayDiff;
 
 // Based on some rough benchmarking, this algorithm is about O(2n) worst case,
@@ -14544,7 +14568,7 @@ function arrayDiff(before, after, equalFn) {
   return removes.concat(outputMoves, inserts);
 }
 
-},{}],74:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 var pSlice = Array.prototype.slice;
 var Object_keys = typeof Object.keys === 'function'
     ? Object.keys
@@ -14648,7 +14672,7 @@ function objEquiv(a, b) {
   return true;
 }
 
-},{}],75:[function(require,module,exports){
+},{}],77:[function(require,module,exports){
 (function (Buffer){
 //     uuid.js
 //
@@ -14897,7 +14921,7 @@ function objEquiv(a, b) {
 }).call(this);
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":30,"crypto":34}],76:[function(require,module,exports){
+},{"buffer":32,"crypto":36}],78:[function(require,module,exports){
 var Doc, Query;
 if (typeof require !== 'undefined') {
   Doc = require('./doc').Doc;
@@ -15398,7 +15422,7 @@ Connection.prototype.createSubscribeQuery = function(index, q, options, callback
   return this._createQuery('sub', index, q, options, callback);
 };
 
-},{"./doc":77,"./microevent":79,"./query":80}],77:[function(require,module,exports){
+},{"./doc":79,"./microevent":81,"./query":82}],79:[function(require,module,exports){
 var types;
 
 if (typeof require !== "undefined") {
@@ -16431,12 +16455,12 @@ Doc.prototype.removeContexts = function() {
   this.editingContexts.length = 0;
 };
 
-},{"./microevent":79,"ottypes":83}],78:[function(require,module,exports){
+},{"./microevent":81,"ottypes":85}],80:[function(require,module,exports){
 
 exports.Connection = require('./connection').Connection;
 exports.Doc = require('./doc').Doc;
 exports.registerType = require('./register').registerType;
-},{"./connection":76,"./doc":77,"./register":81}],79:[function(require,module,exports){
+},{"./connection":78,"./doc":79,"./register":83}],81:[function(require,module,exports){
 // This is a simple rewrite of microevent.js. I've changed the
 // function names to be consistent with node.js EventEmitter.
 //
@@ -16515,7 +16539,7 @@ MicroEvent.mixin = function(obj) {
 if (typeof module !== "undefined") module.exports = MicroEvent;
 
 
-},{}],80:[function(require,module,exports){
+},{}],82:[function(require,module,exports){
 var Doc;
 if (typeof require !== 'undefined') {
   Doc = require('./doc').Doc;
@@ -16752,7 +16776,7 @@ if (typeof require !== 'undefined') {
 MicroEvent.mixin(Query);
 
 
-},{"./doc":77,"./microevent":79}],81:[function(require,module,exports){
+},{"./doc":79,"./microevent":81}],83:[function(require,module,exports){
 var types;
 if (typeof require !== "undefined") {
   types = require('ottypes');
@@ -16764,7 +16788,7 @@ exports.registerType = function(type) {
   if (type.name) types[type.name] = type;
   if (type.uri) types[type.uri] = type;
 };
-},{"ottypes":83}],82:[function(require,module,exports){
+},{"ottypes":85}],84:[function(require,module,exports){
 // These methods let you build a transform function from a transformComponent
 // function for OT types like JSON0 in which operations are lists of components
 // and transforming them requires N^2 work. I find it kind of nasty that I need
@@ -16843,7 +16867,7 @@ exports._bootstrapTransform = function(type, transformComponent, checkValidOp, a
   };
 };
 
-},{}],83:[function(require,module,exports){
+},{}],85:[function(require,module,exports){
 
 var register = function(type) {
   exports[type.name] = type;
@@ -16864,7 +16888,7 @@ register(require('./text0'));
 register(require('./json0'));
 
 
-},{"./json0":84,"./simple":85,"./text":87,"./text-tp2":86,"./text0":88}],84:[function(require,module,exports){
+},{"./json0":86,"./simple":87,"./text":89,"./text-tp2":88,"./text0":90}],86:[function(require,module,exports){
 /*
  This is the implementation of the JSON OT type.
 
@@ -17513,7 +17537,7 @@ if (exports._bootstrapTransform) {
 
 module.exports = json;
 
-},{"./helpers":82,"./text0":88}],85:[function(require,module,exports){
+},{"./helpers":84,"./text0":90}],87:[function(require,module,exports){
 // This is a really simple OT type. Its not compiled with the web client, but it could be.
 //
 // Its mostly included for demonstration purposes and its used in the meta unit tests.
@@ -17568,7 +17592,7 @@ module.exports = {
 };
 
 
-},{}],86:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 // A TP2 implementation of text, following this spec:
 // http://code.google.com/p/lightwave/source/browse/trunk/experimental/ot/README
 //
@@ -18008,7 +18032,7 @@ type.compose = function(op1, op2) {
 };
 
 
-},{}],87:[function(require,module,exports){
+},{}],89:[function(require,module,exports){
 /* Text OT!
  *
  * This is an OT implementation for text. It is the standard implementation of
@@ -18430,7 +18454,7 @@ exports.selectionEq = function(c1, c2) {
 };
 
 
-},{}],88:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 // DEPRECATED!
 //
 // This type works, but is not exported, and will be removed in a future version of this library.
@@ -18695,7 +18719,7 @@ if (exports._bootstrapTransform) {
 }
 
 
-},{"./helpers":82}],89:[function(require,module,exports){
+},{"./helpers":84}],91:[function(require,module,exports){
 (function (global,__filename,__dirname){
 var app, derby;
 
@@ -18717,13 +18741,33 @@ app.loadViews(__dirname + '/../../views/app');
 
 app.loadStyles(__dirname + '/../../styles/app');
 
+app.use(require('./../../components'));
+
 app.get('/', function(page) {
   return page.render('home');
 });
 
+app.proto.init = function(model) {
+  var name, target, view, _ref, _ref1, _ref2, _results;
+  if (derby.util.isServer) {
+    _ref = this.app.views.nameMap;
+    _results = [];
+    for (name in _ref) {
+      view = _ref[name];
+      target = ((_ref1 = view.componentFactory) != null ? _ref1.constructor.prototype.target : void 0) || ((_ref2 = view.options) != null ? _ref2.target : void 0);
+      if (target) {
+        _results.push(model.root.push("_views." + target, name));
+      } else {
+        _results.push(void 0);
+      }
+    }
+    return _results;
+  }
+};
+
 
 }).call(this,typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},"/src\\app\\index.coffee","/src\\app")
-},{"d-bootstrap":2,"derby":"uqEm/A"}]},{},[47,89])
+},{"./../../components":1,"d-bootstrap":4,"derby":"uqEm/A"}]},{},[49,91])
 
 
-//# sourceMappingURL=/derby/app-4c591c5f5a72664b930d93692b334294.map.json
+//# sourceMappingURL=/derby/app-5d951984d7a9446838b6f3b0b4754269.map.json
