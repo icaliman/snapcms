@@ -13,3 +13,8 @@ header:
 
 footer:
   p Footer {{@year}}
+
+
+list:
+  each #root._views[@target] as #home_view
+    view(name="{{#home_view}}")

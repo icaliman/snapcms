@@ -11,9 +11,8 @@ app.serverUse module, 'derby-stylus'
 app.loadViews __dirname + '/../../views/app'
 app.loadStyles __dirname + '/../../styles/app'
 
-#app.use require './../../components'
 
-app.component require './../../components/todo-list'
+app.use require './../../components'
 
 
 app.get '/', (page) ->
