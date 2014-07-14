@@ -15,6 +15,6 @@ footer:
   p Footer {{@year}}
 
 
-list:
+list:(element="views")
   each #root._views[@target] as #home_view
     view(name="{{#home_view}}")
